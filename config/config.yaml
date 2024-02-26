@@ -1,0 +1,10 @@
+artifact_root: artifacts
+
+data_ingestion:
+    root_dir: artifacts/data_ingestion
+    non_tumor_source_URL: https://github.com/udita1903/Computer-Vision/raw/main/notumor.zip
+    golima_source_URL: https://github.com/udita1903/Computer-Vision/raw/main/glioma.zip
+
+    non_tumor_local_file: artifacts/data_ingestion/non_tumor_data.zip
+    golima_local_file: artifacts/data_ingestion/golima.zip
+    unzip_dir: artifacts/data_ingestion
