@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/Users/udita19/Desktop/Projects/BrainTumor/BrainTumorClassification/src')
+sys.path.append('/Users/udita19/Desktop/Projects/BrainTumorClassification/src')
 
 
 from TumorClassifier.constants import*
