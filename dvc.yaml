@@ -4,17 +4,18 @@ stages:
 
     deps: 
       - src/TumorClassifier/pipeline/stage_01_data_ingestion.py
-      -config/config.yaml
+      - config/config.yaml
     
+
     outs:
-      -artifacts/data_ingestion/brain_tumor
+      - artifacts/data_ingestion/brain_tumor
 
   prepare_base_model:
     cmd : python src/TumorClassifier/pipeline/stage_02_prepare_base_model.py
 
     deps: 
       - src/TumorClassifier/pipeline/stage_02_prepare_base_model.py
-      -config/config.yaml
+      - config/config.yaml
     
     params:
       - IMAGE_SIZE
@@ -32,7 +33,7 @@ stages:
 
     deps: 
       - src/TumorClassifier/pipeline/stage_03_training.py
-      - src/TumorClassifier/components/prepare_callback.py 
+      - src/TumorClassifier/components/prepare_callbacks.py 
       - config/config.yaml
       - artifacts/data_ingestion/brain_tumor 
       - artifacts/prepare_base_model
@@ -54,7 +55,7 @@ stages:
     deps: 
       - src/TumorClassifier/pipeline/stage_04_evaluation.py
       - config/config.yaml
-      - artifacts/dat_ingestion/brain_tumor 
+      - artifacts/data_ingestion/brain_tumor 
       - artifacts/training/model.h5
 
     params:
