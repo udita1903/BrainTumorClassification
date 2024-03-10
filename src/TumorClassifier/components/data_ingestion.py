@@ -41,9 +41,16 @@ class DataIngestion:
 
     def extract_zip_file(self):
         unzip_path = self.config.unzip_dir
-        os.makedirs(unzip_path , exist_ok = True)
+        os.makedirs(unzip_path, exist_ok=True)
 
         with zipfile.ZipFile(self.config.golima_local_file, 'r') as zip_ref:
-            zip_ref.extractall(unzip_path)
+            # Extract all items from the zip file, excluding __MACOSX folder
+            for item in zip_ref.infolist():
+                if "__MACOSX" not in item.filename:
+                    zip_ref.extract(item, unzip_path)
+
         with zipfile.ZipFile(self.config.non_tumor_local_file, 'r') as zip_ref:
-            zip_ref.extractall(unzip_path)
+            # Extract all items from the zip file, excluding __MACOSX folder
+            for item in zip_ref.infolist():
+                if "__MACOSX" not in item.filename:
+                    zip_ref.extract(item, unzip_path)
